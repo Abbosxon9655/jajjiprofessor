@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/groups', [SiteController::class, 'groups']);
-Route::get('/team', [SiteController::class, 'team']);
+Route::get('/teach', [SiteController::class, 'teach']);
 Route::get('/yutuqlar', [SiteController::class, 'yutuqlar']);
 Route::get('/gallery', [SiteController::class, 'gallery']);
-Route::get('/blog', [SiteController::class, 'blog']);
+Route::get('/maqola', [SiteController::class, 'maqola']);

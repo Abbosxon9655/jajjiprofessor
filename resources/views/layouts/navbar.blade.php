@@ -1,12 +1,15 @@
+
+
+
 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <a href="/" class="nav-item nav-link active">Bosh sahifa</a>
         <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
         <a href="groups" class="nav-item nav-link">Sinflar</a>
-        <a href="team" class="nav-item nav-link">O'qituvchilar</a>
+        <a href="teach" class="nav-item nav-link">O'qituvchilar</a>
         <a href="yutuqlar" class="nav-item nav-link ">Yutuqlar</a>
         <a href="gallery" class="nav-item nav-link">Galereya</a>
-        <a href="blog" class="nav-item nav-link">Maqolalar</a>
+        <a href="maqola" class="nav-item nav-link">Maqolalar</a>
         <a href="contact.html" class="nav-item nav-link">Aloqa</a>
     </div>
     </div> 

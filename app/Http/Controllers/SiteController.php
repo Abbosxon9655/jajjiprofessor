@@ -16,9 +16,9 @@ class SiteController extends Controller
         return view('pages.groups');
     }
 
-    public function team()
+    public function teach()
     {
-        return view('pages.team');
+        return view('pages.teach');
     }
 
     public function yutuqlar()
@@ -31,9 +31,9 @@ class SiteController extends Controller
         return view('pages.gallery');
     }
 
-    public function blog()
+    public function maqola()
     {
-        return view('pages.blog');
+        return view('pages.maqola');
     }
 
 
