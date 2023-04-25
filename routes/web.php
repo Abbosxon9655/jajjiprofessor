@@ -36,5 +36,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::get('info/index', [InfoController::class, 'index'])->name('info.index');
+    Route::get('info/create', [InfoController::class, 'create'])->name('infos.create');
+    Route::post('info/store', [InfoController::class, 'store'])->name('infos.store');
 
 });
