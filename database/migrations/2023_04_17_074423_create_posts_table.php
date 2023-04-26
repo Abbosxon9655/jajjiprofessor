@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('img');
             $table->text('title');
             $table->text('status');
-            $table->string('agr');
-            $table->text('Orindiq soni');
-            $table->text('tolov');
+            $table->string('age');
+            $table->text('send');
+            $table->text('pay');
             $table->timestamps();
         });
     }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\BazaController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SiteController;
@@ -38,5 +40,10 @@ Route::prefix('admin/')->name('admin.')->group(function () {
     Route::get('info/index', [InfoController::class, 'index'])->name('info.index');
     Route::get('info/create', [InfoController::class, 'create'])->name('infos.create');
     Route::post('info/store', [InfoController::class, 'store'])->name('infos.store');
+
+    Route::get('/posts/index', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+
 
 });

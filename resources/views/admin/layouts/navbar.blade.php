@@ -16,8 +16,8 @@
         </li>
 
         <li class="dropdown @yield('provinces')">
-          <a href="{{-- {{ route('provinces.index') }} --}}" ><i
-              data-feather="briefcase"></i><span>Provinces</span></a>
+          <a href="{{ route('admin.posts.index') }}" ><i
+              data-feather="briefcase"></i><span>Post</span></a>
         </li>
         <li class="dropdown @yield('regions')">
           <a href="{{-- {{ route('regions.index') }} --}}" ><i
