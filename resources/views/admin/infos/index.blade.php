@@ -15,7 +15,7 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            <h4>Teachers</h4>
+                            <h4>Infos</h4>
                             <a href="{{ route('admin.infos.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
@@ -31,6 +31,7 @@
                                             <th>title</th>
                                             <th>short_content</th>
                                             <th>icon</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,27 +42,32 @@
                                             </tr>
                                         @endif
 
-                                        @foreach ($infos as $info)
+                                        @foreach ($infos as $item)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $info->title }}</td>
-                                                <td>{{ $info->short_content }}</td>
-                                                <td>{{ $info->icon }}</td>
+                                                <td>{{ $item->title }}</td>
+                                                <td>{{ $item->short_content }}</td>
+                                                <td>{{ $item->icon }}</td>
 
                                                 <td>
-                                                    <form action="{{-- {{ route('teacher.destroy', $teacher->id) }} --}}"
+                                                    <form action="{{ route('admin.infos.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{-- {{ route('teacher.show', $teacher->id) }} --}}"
+                                                        <a href="{{ route('admin.infos.show', $item->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{-- {{ route('teacher.edit', $teacher->id) }} --}}"
+                                                        <a href="{{ route('admin.infos.edit', $item->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
+
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete ?')"><ion-icon name="trash-outline"></ion-icon></button>
+                
                                                         </a>
                                                         <button class="btn btn-danger"
                                                             onclick="return confirm('Rostdan o`chirmoqchimisiz ?')">

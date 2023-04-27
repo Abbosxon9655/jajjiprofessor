@@ -21,12 +21,12 @@ active
                 <table class="table table-striped" id="table-1">
                   <thead>
                     <tr>
-                        <td>name : </td>
+                        <td>Ismi : </td>
                         <td><b>{{ $order->name }}</b></td>
                     </tr>
 
                     <tr>
-                      <td>phon : </td>
+                      <td>phone : </td>
                       <td><b>{{ $order->phone }}</b></td>
                   </tr>
 
@@ -34,6 +34,11 @@ active
                     <td>email : </td>
                     <td><b>{{ $order->email }}</b></td>
                 </tr>
+
+
+                   
+
+
 
                 </table>
               </div>
