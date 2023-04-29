@@ -37,4 +37,29 @@ class OrderController extends Controller
         return view('admin.orders.show', compact('order'));
     }
 
+    public function edit($id)
+    {
+        $order = DB::table('orders')->where('id', $id)->first();
+
+        return view('admin.orders.edit', compact('order')); 
+    }
+
+    public function update(Request $request, $id)
+    {
+        DB::table('orders')->where('id', $id)->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+
+        ]);
+
+        return redirect()->route('admin.orders.index');
+    }
+
+    public function destroy($id){
+        DB::table('orders')->where('id', $id)->delete();
+
+        return redirect()->route('admin.orders.index');
+    }
+
 }

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\CommentsController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\admin\TeachController;
 use App\Http\Controllers\BazaController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SiteController;
@@ -59,8 +61,29 @@ Route::prefix('admin/')->name('admin.')->group(function () {
     Route::get('/orders/index', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('orders/store', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('/orders/edit/{id}', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::put('/orders/update/{id}', [OrderController::class, 'update'])->name('orders.update');
+    Route::delete('/orders/destroy/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
-    Route::get('/posts/show/{id}', [OrderController::class, 'show'])->name('orders.show');
+
+    Route::get('/teachs/index', [TeachController::class, 'index'])->name('teachs.index');
+    Route::get('/teachs/create', [TeachController::class, 'create'])->name('teachs.create');
+    Route::post('/teachs/store', [TeachController::class, 'store'])->name('teachs.store');
+    Route::get('/teachs/show/{id}', [TeachController::class, 'show'])->name('teachs.show');
+    Route::get('/teachs/edit/{id}', [TeachController::class, 'edit'])->name('teachs.edit');
+    Route::put('/teachs/update/{id}', [TeachController::class, 'update'])->name('teachs.update');
+    Route::delete('/teachs/destroy/{id}', [TeachController::class, 'destroy'])->name('teachs.destroy');
+
+
+    Route::get('/commentss/index', [CommentsController::class, 'index'])->name('commentss.index');
+
+
+
+
+
+
+
 
 
     

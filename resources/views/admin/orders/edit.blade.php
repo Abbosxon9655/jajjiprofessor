@@ -28,38 +28,25 @@
               <h4>Edit</h4>
             </div>
             <div class="card-body">
-              <form action="{{ route('teacher.update', $teacher->id) }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="name" value="{{ $teacher->name }}">
+                  <input type="text" class="form-control" name="name" value="{{ $order->name }}">
                 </div>
               </div>
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">phone</label>
                 <div class="col-sm-12 col-md-7">
-                  <select class="form-control selectric">
-                    <option>Tech</option>
-                    <option>News</option>
-                    <option>Political</option>
-                  </select>
+                  <input type="text" class="form-control" name="phone" value="{{ $order->phone }}">
                 </div>
               </div>
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">email</label>
                 <div class="col-sm-12 col-md-7">
-                  <textarea class="summernote"></textarea>
-                </div>
-              </div>
-              <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
-                <div class="col-sm-12 col-md-7">
-                  <div id="image-preview" class="image-preview">
-                    <label for="image-upload" id="image-label">Choose File</label>
-                    <input type="file" name="img" value="{{ $teacher->img }}" id="image-upload" />
-                  </div>
+                  <input type="text" class="form-control" name="email" value="{{ $order->email }}">
                 </div>
               </div>
               <div class="form-group row mb-4">

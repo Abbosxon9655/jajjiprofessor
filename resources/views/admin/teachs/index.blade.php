@@ -15,8 +15,8 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            <h4>Orders</h4>
-                            <a href="{{ route('admin.orders.create') }}" class="btn btn-primary"
+                            <h4>Teachers</h4>
+                            <a href="{{ route('admin.teachs.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
 
@@ -29,41 +29,46 @@
                                                 #
                                             </th>
                                             <th>name</th>
-                                            <th>phone</th>
-                                            <th>email</th>
-
+                                            <th>img</th>
+                                            <th>direction</th>
+                                            <th>telegram</th>
+                                            <th>instegram</th>
+                                            <th>faceebook</th>
+                                            <th>Action</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($orders) == 0)
+                                        @if (count($teachs) == 0)
                                             <tr>
                                                 <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                                                 </td>
                                             </tr>
                                         @endif
 
-                                        @foreach ($orders as $order)
+                                        @foreach ($teachs as $teach)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $order->name }}</td>
-                                                <td>{{ $order->phone }}</td>
-                                                <td>{{ $order->email }}</td>
-                                               
+                                                <td>{{ $teach->name }}</td>
+                                                <td>{{ $teach->img }}</td>
+                                                <td>{{ $teach->direction }}</td>
+                                                <td>{{ $teach->telegram }}</td>
+                                                <td>{{ $teach->instegram }}</td>
+                                                <td>{{ $teach->faceebook }}</td>
 
 
                                                 <td>
-                                                    <form action="{{ route('admin.orders.destroy', $order->id) }}"
+                                                    <form action="{{ route('admin.teachs.destroy', $teach->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.orders.show', $order->id) }}"
+                                                        <a href="{{ route('admin.teachs.show', $teach->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.orders.edit', $order->id) }}"
+                                                        <a href="{{ route('admin.teachs.edit', $teach->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
                                                         </a>
