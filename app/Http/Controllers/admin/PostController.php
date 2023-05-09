@@ -1,73 +1,78 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+  
     public function index()
     {
-        $posts = DB::table('posts')->orderBy('id', 'DESC')->get();
-
+        $posts = Post::orderBy('id', 'DESC')->get();
         return view('admin.posts.index', compact('posts'));
+
     }
 
+  
     public function create()
     {
         return view('admin.posts.create');
+
     }
+
 
     public function store(Request $request)
     {
-        // dd($request);
-        DB::table('posts')->insert([
-            'name' => $request->name,
-            'img' => $request->img,
-            'title' => $request->title,
-            'status' => $request->status,
-            'age' => $request->age,
-            'send' => $request->send,
-            'pay' => $request->pay,
-        ]);
+        $requestData = $request->all();
+        
+        if($request->hasFile('img'))
+        {
+            $file = $request->file('img');
+            $imgName = $file->getClientOriginalName();
+            $file->move('imeges/', $imgName);
+            $requestData['img'] = $imgName;
+        }
+        Post::create ($requestData);
+
         return redirect()->route('admin.posts.index');
     }
 
-    public function show($id){
-        $post = DB::table('posts')->where('id', $id)->first();
-
+   
+    public function show(Post $post)
+    {
         return view('admin.posts.show', compact('post'));
     }
 
-    public function edit($id)
+  
+    public function edit(Post $post)
     {
-        $post = DB::table('posts')->where('id', $id)->first();
-
         return view('admin.posts.edit', compact('post'));
     }
 
-    public function update(Request $request, $id){
-
-        DB::table('posts')->where('id', $id)->update([
-            'name' => $request->name,
-            'img' => $request->img,
-            'title' => $request->title,
-            'status' => $request->status,
-            'age' => $request->age,
-            'send' => $request->send,
-            'pay' => $request->pay
-
-        ]);
-
+   
+    public function update(Request $request, $id)
+    {
+        $requestData = $request->all();
+        
+        if($request->hasFile('img'))
+        {
+            $file = $request->file('img');
+            $imgName = $file->getClientOriginalName();
+            $file->move('imeges/', $imgName);
+            $requestData['img'] = $imgName;
+        }
+        
+        Post::find($id)->update($requestData);
         return redirect()->route('admin.posts.index');
     }
 
-    public function destroy($id){
-        DB::table('posts')->where('id', $id)->delete();
-
+  
+    public function destroy(Post $post)
+    {
+        $post -> delete();
         return redirect()->route('admin.posts.index');
     }
-
 }

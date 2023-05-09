@@ -15,8 +15,8 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            <h4>Teachers</h4>
-                            <a href="{{ route('admin.teachs.create') }}" class="btn btn-primary"
+                            <h4>Shows</h4>
+                            <a href="{{ route('admin.shows.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
 
@@ -30,45 +30,40 @@
                                             </th>
                                             <th>name</th>
                                             <th>img</th>
-                                            <th>direction</th>
-                                            <th>telegram</th>
-                                            <th>instegram</th>
-                                            <th>faceebook</th>
+                                            <th>shortcontet</th>
                                             <th>Action</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($teachs) == 0)
+                                        @if (count($shows) == 0)
                                             <tr>
                                                 <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                                                 </td>
                                             </tr>
                                         @endif
 
-                                        @foreach ($teachs as $teach)
+                                        @foreach ($shows as $item)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $teach->name }}</td>
-                                                <td>{{ $teach->img }}</td>
-                                                <td>{{ $teach->direction }}</td>
-                                                <td>{{ $teach->telegram }}</td>
-                                                <td>{{ $teach->instegram }}</td>
-                                                <td>{{ $teach->faceebook }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td><img src="/imeges/{{ $item->img }}" width="100" alt=""></td>
+                                                <td>{{ $item->shortcontetnt }}</td>
+                                               
 
 
                                                 <td>
-                                                    <form action="{{ route('admin.teachs.destroy', $teach->id) }}"
+                                                    <form action="{{ route('admin.shows.destroy', $item->id)}}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.teachs.show', $teach->id) }}"
+                                                        <a href="{{ route('admin.shows.show', $item->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.teachs.edit', $teach->id) }}"
+                                                        <a href=" {{ route('admin.shows.edit', $item->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
                                                         </a>
@@ -84,6 +79,8 @@
 
                                     </tbody>
                                 </table>
+
+                                {{$shows->links()}}
                             </div>
                         </div>
                     </div>

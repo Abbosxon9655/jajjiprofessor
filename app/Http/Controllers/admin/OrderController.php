@@ -1,65 +1,53 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = DB::table('orders')->orderBy('id', 'DESC')->get();
+        $orders = Order::orderBy('id', 'DESC')->get();
         return view('admin.orders.index', compact('orders'));
+
     }
 
+   
     public function create()
     {
         return view('admin.orders.create');
     }
 
+
     public function store(Request $request)
     {
-        // dd($request);
-        DB::table('orders')->insert([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-         
-        ]);
+        Order::create($request->all());
+
         return redirect()->route('admin.orders.index');
     }
 
-    public function show($id){
-        $order = DB::table('orders')->where('id', $id)->first();
-
+ 
+    public function show(Order $order)
+    {
         return view('admin.orders.show', compact('order'));
     }
 
-    public function edit($id)
+    public function edit(Order $order)
     {
-        $order = DB::table('orders')->where('id', $id)->first();
-
-        return view('admin.orders.edit', compact('order')); 
+        return view('admin.orders.edit', compact('order'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        DB::table('orders')->where('id', $id)->update([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-
-        ]);
-
+        $order-> update($request->all());
         return redirect()->route('admin.orders.index');
     }
-
-    public function destroy($id){
-        DB::table('orders')->where('id', $id)->delete();
-
+    public function destroy(Order $order)
+    {
+        $order -> delete();
         return redirect()->route('admin.orders.index');
     }
-
 }

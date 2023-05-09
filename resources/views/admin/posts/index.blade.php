@@ -35,6 +35,8 @@
                                             <th>age</th>
                                             <th>send</th>
                                             <th>pay</th>
+                                            <th>action</th>
+
 
 
                                         </tr>
@@ -47,30 +49,30 @@
                                             </tr>
                                         @endif
 
-                                        @foreach ($posts as $post)
+                                        @foreach ($posts as $item)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $post->name }}</td>
-                                                <td>{{ $post->img }}</td>
-                                                <td>{{ $post->title }}</td>
-                                                <td>{{ $post->status }}</td>
-                                                <td>{{ $post->age }}</td>
-                                                <td>{{ $post->send }}</td>
-                                                <td>{{ $post->pay }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td><img src="/imeges/{{ $item->img }}" width="100" alt=""></td>
+                                                <td>{{ $item->title }}</td>
+                                                <td>{{ $item->status }}</td>
+                                                <td>{{ $item->age }}</td>
+                                                <td>{{ $item->send }}</td>
+                                                <td>{{ $item->pay }}</td>
 
 
                                                 <td>
-                                                    <form action="{{ route('admin.posts.destroy', $post->id) }}"
+                                                    <form action="{{ route('admin.posts.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.posts.show', $post->id) }}"
+                                                        <a href="{{ route('admin.posts.show', $item->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.posts.edit', $post->id) }}"
+                                                        <a href="{{ route('admin.posts.edit', $item->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
                                                         </a>

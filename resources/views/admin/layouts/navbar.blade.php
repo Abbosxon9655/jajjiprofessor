@@ -24,15 +24,18 @@
               data-feather="briefcase"></i><span>Orders</span></a>
         </li>
 
-        <li class="dropdown @yield('regions')">
-          <a href="{{ route('admin.teachs.index') }}" ><i
-              data-feather="briefcase"></i><span>Teachers</span></a>
-        </li>
+     
 
-        <li class="dropdown @yield('regions')">
+        {{-- <li class="dropdown @yield('regions')">
           <a href="{{ route('admin.comments.index') }}" ><i
               data-feather="briefcase"></i><span>Comments</span></a>
-        </li>
+        </li> --}}
+      </li>
+      <li class="dropdown @yield('regions')">
+        <a href="{{ route('admin.shows.index') }}" ><i
+            data-feather="briefcase"></i><span>Show</span></a>
+      </li>
+
 
       </ul>
     </aside>

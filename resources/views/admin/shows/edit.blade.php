@@ -28,51 +28,31 @@
               <h4>Edit</h4>
             </div>
             <div class="card-body">
-              <form action="{{ route('admin.teachs.update', $teach->id) }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('admin.shows.update', $show->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="name" value="{{ $teach->name }}">
+                  <input type="text" class="form-control" name="name" value="{{ $show->name }}">
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">img</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="img" value="{{ $teach->img }}">
+                  <input type="text" class="form-control" name="img" value="{{ $show->img }}">
                 </div>
               </div>
 
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">direction</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">shortcontent</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="direction" value="{{ $teach->direction }}">
+                  <input type="text" class="form-control" name="shortcontent" value="{{ $show->shortcontent }}">
                 </div>
               </div>
 
-              <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">telegram</label>
-                <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="telegram" value="{{ $teach->telegram }}">
-                </div>
-              </div>
-
-              <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">instegram</label>
-                <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="instegram" value="{{ $teach->instegram }}">
-                </div>
-              </div>
-
-              <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">faceebook</label>
-                <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="faceebook" value="{{ $teach->faceebook }}">
-                </div>
-              </div>
-
+              
              
              
               <div class="form-group row mb-4">

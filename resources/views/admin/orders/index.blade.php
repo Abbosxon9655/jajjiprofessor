@@ -26,11 +26,13 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">
-                                                #
+                                               #
                                             </th>
                                             <th>name</th>
                                             <th>phone</th>
                                             <th>email</th>
+                                            <th>action</th>
+
 
 
                                         </tr>
@@ -43,27 +45,27 @@
                                             </tr>
                                         @endif
 
-                                        @foreach ($orders as $order)
+                                        @foreach ($orders as $item)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $order->name }}</td>
-                                                <td>{{ $order->phone }}</td>
-                                                <td>{{ $order->email }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->phone }}</td>
+                                                <td>{{ $item->email }}</td>
                                                
 
 
                                                 <td>
-                                                    <form action="{{ route('admin.orders.destroy', $order->id) }}"
+                                                    <form action="{{ route('admin.orders.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.orders.show', $order->id) }}"
+                                                        <a href="{{ route('admin.orders.show', $item->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.orders.edit', $order->id) }}"
+                                                        <a href="{{ route('admin.orders.edit', $item->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
                                                         </a>

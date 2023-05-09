@@ -26,7 +26,7 @@ active
                     </tr>
 
                     <tr>
-                      <td>name : </td>
+                      <td>img : </td>
                       <td><b>{{ $post->img }}</b></td>
                   </tr>
 

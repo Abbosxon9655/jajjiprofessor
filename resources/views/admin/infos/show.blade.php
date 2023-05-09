@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Show Product</h4>
-                            <a href="{{ route('admin.posts.index') }}" class="btn btn-primary"
+                            <a href="{{ route('admin.infos.index') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Back</a>
                         </div>
 
@@ -33,7 +33,7 @@
                                         </tr>
                                         <tr>
                                           <td>icon : </td>
-                                          <td><b>{{ $info->icon }}</b></td>
+                                          <td><b><img src="/imeges/{{ $info->icon }}" width="100" alt=""></b></td>
                                       </tr>
                                 </table>
                             </div>

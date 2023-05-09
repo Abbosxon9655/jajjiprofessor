@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('teachers')
+@section('posts')
     active
 @endsection
 
@@ -34,12 +34,17 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">name</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text" class="form-control" name="name">
+
+                                        @error('img')
+                                        {{$message}}
+                                        @enderror"
+
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">img</label>
                                   <div class="col-sm-12 col-md-7">
-                                      <input type="text" class="form-control" name="img">
+                                      <input type="file" class="form-control" name="img">
                                   </div>
                               </div>
                               <div class="form-group row mb-4">

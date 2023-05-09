@@ -49,7 +49,8 @@
                                                 </td>
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->short_content }}</td>
-                                                <td>{{ $item->icon }}</td>
+                                                <td><img src="/imeges/{{ $item->icon }}" width="100px" alt="">
+                                                </td>
 
                                                 <td>
                                                     <form action="{{ route('admin.infos.destroy', $item->id) }}"
@@ -66,8 +67,11 @@
 
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete ?')"><ion-icon name="trash-outline"></ion-icon></button>
-                
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('Do you want to delete ?')">
+                                                                <ion-icon name="trash-outline"></ion-icon>
+                                                            </button>
+
                                                         </a>
                                                         <button class="btn btn-danger"
                                                             onclick="return confirm('Rostdan o`chirmoqchimisiz ?')">
@@ -81,6 +85,8 @@
 
                                     </tbody>
                                 </table>
+
+                                {{ $infos->links() }}
                             </div>
                         </div>
                     </div>
