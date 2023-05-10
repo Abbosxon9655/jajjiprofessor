@@ -15,8 +15,8 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            <h4>Infos</h4>
-                            <a href="{{ route('admin.infos.create') }}" class="btn btn-primary"
+                            <h4>Articles</h4>
+                            <a href="{{ route('admin.articles.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
 
@@ -28,52 +28,47 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>title</th>
-                                            <th>short_content</th>
-                                            <th>icon</th>
+                                            <th>name</th>
+                                            <th>img</th>
+                                            <th>job</th>
+                                            <th>short</th>
                                             <th>Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($infos) == 0)
+                                        @if (count($articles) == 0)
                                             <tr>
                                                 <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                                                 </td>
                                             </tr>
                                         @endif
 
-                                        @foreach ($infos as $item)
+                                        @foreach ($articles as $item)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $item->title }}</td>
-                                                <td>{{ $item->short_content }}</td>
-                                                <td><img src="/imeges/{{ $item->icon }}" width="100px"  alt="">
-                                                    <br>
-                                                    <br>
-                                                </td>
+                                                <td>{{ $item->name }}</td>
+                                                <td><img src="/imeges/{{ $item->img }}" width="100" alt=""></td>
+                                                <td>{{ $item->job }}</td>
+                                                <td>{{ $item->short }}</td>
+
+                                               
+
 
                                                 <td>
-                                                    <form action="{{ route('admin.infos.destroy', $item->id) }}"
+                                                    <form action="{{ route('admin.articles.destroy', $item->id)}}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.infos.show', $item->id) }}"
+                                                        <a href="{{ route('admin.articles.show', $item->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.infos.edit', $item->id) }}"
+                                                        <a href=" {{ route('admin.articles.edit', $item->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
-
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirm('Do you want to delete ?')">
-                                                                <ion-icon name="trash-outline"></ion-icon>
-                                                            </button>
-
                                                         </a>
                                                         <button class="btn btn-danger"
                                                             onclick="return confirm('Rostdan o`chirmoqchimisiz ?')">
@@ -88,7 +83,7 @@
                                     </tbody>
                                 </table>
 
-                                {{ $infos->links() }}
+                                {{$articles->links()}}
                             </div>
                         </div>
                     </div>

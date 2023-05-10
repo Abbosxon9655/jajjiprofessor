@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::orderBy('id', 'DESC')->get();
+        $orders = Order::orderBy('id', 'DESC')->paginate(2);
         return view('admin.orders.index', compact('orders'));
 
     }
@@ -24,6 +24,13 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|max:15|min:10',
+            'phone'=>'required|max:20|min:7',
+            'email'=>'required|max:30|min:10',
+
+        ]);
+
         Order::create($request->all());
 
         return redirect()->route('admin.orders.index');
@@ -42,6 +49,13 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
+        $request->validate([
+            'name'=>'required|max:15|min:10',
+            'phone'=>'required|max:20|min:7',
+            'email'=>'required|max:30|min:10',
+
+        ]);
+        
         $order-> update($request->all());
         return redirect()->route('admin.orders.index');
     }

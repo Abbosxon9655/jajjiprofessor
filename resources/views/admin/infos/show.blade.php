@@ -33,7 +33,7 @@
                                         </tr>
                                         <tr>
                                           <td>icon : </td>
-                                          <td><b><img src="/imeges/{{ $info->icon }}" width="100" alt=""></b></td>
+                                          <td><b><img src="/imeges/{{ $info->icon }}" width="100"  alt=""></b><br><br></td>
                                       </tr>
                                 </table>
                             </div>

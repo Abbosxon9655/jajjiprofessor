@@ -170,9 +170,14 @@
                   Settings
                 </a>
                 <div class="dropdown-divider"></div>
-                    <form action="#" method="POST">
+                    <form  method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> Chqiish</button>
+                        
+                        <button class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> 
+                         
+                          Chiqish
+                        </button>
+                          
                     </form>
               </div>
             </li>

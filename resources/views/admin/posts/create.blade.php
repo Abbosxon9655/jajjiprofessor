@@ -37,7 +37,7 @@
 
                                         @error('img')
                                         {{$message}}
-                                        @enderror"
+                                        @enderror
 
                                     </div>
                                 </div>

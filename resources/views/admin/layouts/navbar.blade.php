@@ -36,6 +36,12 @@
             data-feather="briefcase"></i><span>Show</span></a>
       </li>
 
+    </li>
+    <li class="dropdown @yield('regions')">
+      <a href="{{ route('admin.articles.index') }}" ><i
+          data-feather="briefcase"></i><span>Article</span></a>
+    </li>
+
 
       </ul>
     </aside>

@@ -26,6 +26,14 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|max:20',
+            'img'=>'required|mimes:png,jpg',
+            'title'=>'required|min:15',
+            'status'=>'required|max:20',
+            'age'=>'required|max:25',
+
+        ]);
         $requestData = $request->all();
         
         if($request->hasFile('img'))
@@ -55,6 +63,15 @@ class PostController extends Controller
    
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name'=>'required|max:20',
+            'img'=>'required|mimes:png,jpg',
+            'title'=>'required|min:15',
+            'status'=>'required|max:20',
+            'age'=>'required|max:25',
+
+        ]);
+        
         $requestData = $request->all();
         
         if($request->hasFile('img'))
