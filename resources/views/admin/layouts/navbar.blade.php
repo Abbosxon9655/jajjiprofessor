@@ -24,8 +24,8 @@
               data-feather="briefcase"></i><span>Orders</span></a> --}}
         </li>
         <li class="dropdown @yield('peoples')">
-          <a href="{{ route('admin.peoples.index') }}" ><i
-              data-feather="briefcase"></i><span>Peoples</span></a>
+          <a href="{{ route('admin.humans.index') }}" ><i
+              data-feather="briefcase"></i><span>Humanss</span></a>
         </li>
         <li class="dropdown @yield('numbers')">
           <a href="{{ route('admin.numbers.index') }}" ><i

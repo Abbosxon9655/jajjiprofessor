@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('peoples')
+@section('humans')
     active
 @endsection
 
@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Odamlar</h4>
-                            <a href="{{ route('admin.peoples.create') }}" class="btn btn-primary"
+                            <a href="{{ route('admin.humans.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
 
@@ -35,31 +35,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($peoples) == 0)
+                                        @if (count($humans) == 0)
                                             <tr>
                                                 <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                                                 </td>
                                             </tr>
                                         @endif
 
-                                        @foreach ($peoples as $people)
+                                        @foreach ($humans as $item)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $people->name }}</td>
-                                                <th>{{ $people->number->name ?? 'Boglanmagan' }}</th>
+                                                <td>{{ $item->name }}</td>
+                                                <th>{{ $item->number->name ?? 'Boglanmagan' }}</th>
 
                                                 <td>
-                                                    <form action="{{ route('admin.peoples.destroy', $people->id) }}"
+                                                    <form action="{{ route('admin.humans.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.peoples.show', $people->id) }}"
+                                                        <a href="{{ route('admin.humans.show', $item->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.peoples.edit', $people->id) }}"
+                                                        <a href="{{ route('admin.humans.edit', $item->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
                                                         </a>
@@ -75,7 +75,7 @@
 
                                     </tbody>
                                 </table>
-                                {{ $peoples->links() }}
+                                {{ $humans->links() }}
                             </div>
                         </div>
                     </div>

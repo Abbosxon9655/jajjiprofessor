@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('peoples')
+@section('humans')
     active
 @endsection
 
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{{ route('admin.peoples.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.humans.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group row mb-4">
@@ -46,10 +46,15 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nomer</label>
                                     <div class="col-sm-12 col-md-7">
+
                                         <select name="number_id" class="form-control">
+
                                             @foreach ($numbers as $item)
+
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
+
                                             @endforeach
+                                            
                                         </select>
                                     </div>
                                 </div>
