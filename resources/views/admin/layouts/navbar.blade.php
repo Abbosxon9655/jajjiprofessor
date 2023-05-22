@@ -10,7 +10,7 @@
         <li class="dropdown @yield('dashboard')">
           <a href="/a-panel" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
         </li>
-        <li class="dropdown @yield('teachers')">
+        {{-- <li class="dropdown @yield('teachers')">
           <a href="{{ route('admin.infos.index') }}" ><i
               data-feather="briefcase"></i><span>Info</span></a>
         </li>
@@ -19,9 +19,17 @@
           <a href="{{ route('admin.posts.index') }}" ><i
               data-feather="briefcase"></i><span>Post</span></a>
         </li>
-        <li class="dropdown @yield('regions')">
+        <li class="dropdown @yield('orderss')">
           <a href="{{ route('admin.orders.index') }}" ><i
-              data-feather="briefcase"></i><span>Orders</span></a>
+              data-feather="briefcase"></i><span>Orders</span></a> --}}
+        </li>
+        <li class="dropdown @yield('peoples')">
+          <a href="{{ route('admin.peoples.index') }}" ><i
+              data-feather="briefcase"></i><span>Peoples</span></a>
+        </li>
+        <li class="dropdown @yield('numbers')">
+          <a href="{{ route('admin.numbers.index') }}" ><i
+              data-feather="briefcase"></i><span>Numbers</span></a>
         </li>
 
      
@@ -30,7 +38,7 @@
           <a href="{{ route('admin.comments.index') }}" ><i
               data-feather="briefcase"></i><span>Comments</span></a>
         </li> --}}
-      </li>
+      {{-- </li>
       <li class="dropdown @yield('regions')">
         <a href="{{ route('admin.shows.index') }}" ><i
             data-feather="briefcase"></i><span>Show</span></a>
@@ -40,7 +48,7 @@
     <li class="dropdown @yield('regions')">
       <a href="{{ route('admin.articles.index') }}" ><i
           data-feather="briefcase"></i><span>Article</span></a>
-    </li>
+    </li> --}}
 
 
       </ul>

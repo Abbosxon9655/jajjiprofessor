@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ShowController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\articleController;
+use App\Http\Controllers\NumberController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Framework\Attributes\PostCondition;
 
@@ -50,6 +52,8 @@ Route::prefix('admin/')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/shows', ShowController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/articles', articleController::class);
+    Route::resource('/numbers', NumberController::class);
+    Route::resource('/peoples', PeopleController::class);
 
 });
 
