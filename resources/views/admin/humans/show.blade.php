@@ -13,7 +13,7 @@ active
           <div class="card">
             <div class="card-header">
               <h4>Show Product</h4>
-              <a href="{{ route('admin.orders.index') }}" class="btn btn-primary" style="position:absolute; right:50;">Back</a>
+              <a href="{{ route('admin.humans.index') }}" class="btn btn-primary" style="position:absolute; right:50;">Back</a>
             </div>
 
             <div class="card-body">
@@ -22,18 +22,13 @@ active
                   <thead>
                     <tr>
                         <td>Ismi : </td>
-                        <td><b>{{ $order->name }}</b></td>
+                        <td><b>{{ $human->name }}</b></td>
                     </tr>
 
                     <tr>
-                      <td>phone : </td>
-                      <td><b>{{ $order->phone }}</b></td>
+                      <td>Raqami : </td>
+                      <td><b>{{ $human->number }}</b></td>
                   </tr>
-
-                  <tr>
-                    <td>email : </td>
-                    <td><b>{{ $order->email }}</b></td>
-                </tr>
 
 
                    
