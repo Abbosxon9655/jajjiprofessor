@@ -13,9 +13,15 @@ use App\Http\Controllers\Admin\ShowController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\articleController;
-use App\Http\Controllers\NumberController;
-use App\Http\Controllers\admin\HumanController;
+use App\Http\Controllers\Admin\BladeController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\NumberController;
+use App\Http\Controllers\Admin\HumanController;
+use App\Http\Controllers\Admin\NeighborhoodController;
+use App\Http\Controllers\Admin\RegionController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\Compilers\BladeCompiler;
 use PHPUnit\Framework\Attributes\PostCondition;
 
 /*
@@ -43,7 +49,7 @@ Route::get('/maqola', [SiteController::class, 'maqola']);
 
 Route::post('/store', [BazaController::class, 'store'])->name('store');
 
-Route::prefix('admin/')->middleware('auth')->name('admin.')->group(function () {
+Route::prefix('admin/')/* ->middleware('auth') */->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     
@@ -54,7 +60,11 @@ Route::prefix('admin/')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/articles', articleController::class);
     Route::resource('/numbers', NumberController::class);
     Route::resource('/humans', HumanController::class);
-
+    Route::resource('/categories', CategoryController::class);
+    Route::resource('/blades', BladeController::class);
+    Route::resource('/regions', RegionController::class);
+    Route::resource('/districts', DistrictController::class);
+    Route::resource('/neighborhoods', NeighborhoodController::class);
 });
 
 Auth::routes();

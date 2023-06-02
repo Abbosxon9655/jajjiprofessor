@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InfoStoreRequest;
 use App\Models\Info;
 use Illuminate\Http\Request;
 
@@ -24,24 +25,14 @@ class InfoController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store( InfoStoreRequest  $request, Info $info)
     {
-        $request->validate([
-            'title'=>'required|min:5|max:40',
-            'short_content'=>'required|max:50|min:12',
-            'icon'=>'required|max:2048',
-
-        ]);
-
 
         $requestData = $request->all();
         
         if($request->hasFile('icon'))
         {
-            $file = $request->file('icon');
-            $iconName = $file->getClientOriginalName();
-            $file->move('imeges/', $iconName);
-            $requestData['icon'] = $iconName;
+            $requestData['icon'] = $this->upload_file();
         }
 
         Info::create($requestData);
@@ -62,28 +53,17 @@ class InfoController extends Controller
     }
 
    
-    public function update(Request $request,$id)
+    public function update(InfoStoreRequest $request, Info $info)
     {
-        $request->validate([
-            'title'=>'required|min:5|max:40',
-            'short_content'=>'required|max:50|min:12',
-            'icon'=>'required|max:2048',
-
-        ]);
-
-
-
+       
         $requestData = $request->all();
         
         if($request->hasFile('icon'))
         {
-            $file = $request->file('icon');
-            $iconName = $file->getClientOriginalName();
-            $file->move('imeges/', $iconName);
-            $requestData['icon'] = $iconName;
+           $requestData['icon'] = $this->upload_file();
         }
 
-        Info::find($id)->update($requestData);
+        $info->update($requestData);
 
         return redirect()->route('admin.infos.index');
     }
@@ -93,5 +73,21 @@ class InfoController extends Controller
     {
         $info -> delete();
         return redirect()->route('admin.infos.index');
+    }
+
+    public function unlink_file(Info $info)
+    {
+        if(isset($info->icon) && file_exists(public_path('/icon/'. $info->icon)));
+        {
+            unlink(public_path('/icon/'.$info->icon));
+        }
+    }
+
+    public function upload_file()
+    {
+        $file = request()->file('icon');
+            $iconName = $file->getClientOriginalName();
+            $file->move('imeges/', $iconName);
+           return $iconName;
     }
 }

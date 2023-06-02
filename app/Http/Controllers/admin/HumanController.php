@@ -34,7 +34,7 @@ class HumanController extends Controller
     {
         $human = Human::find($id);
 
-        return view('admin.humans.show', compact('humans'));
+        return view('admin.humans.show', compact('human'));
     }
 
     public function edit($id)

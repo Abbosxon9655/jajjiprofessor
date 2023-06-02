@@ -16,7 +16,7 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            <h4>Odamlar</h4>
+                            <h4>numbers</h4>
                             <a href="{{ route('admin.numbers.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
