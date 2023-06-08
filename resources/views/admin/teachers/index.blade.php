@@ -3,20 +3,29 @@
 @section('teachers')
     active
 @endsection
+
 @section('content')
     <section class="section">
         <div class="section-body">
             <div class="row">
                 <div class="col-12">
+
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    @if ($message = Session::get('danger'))
+                        <div class="alert alert-danger">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
                     <div class="card">
+
                         <div class="card-header">
-                            <h4>Infos</h4>
-                            <a href="{{ route('admin.infos.create') }}" class="btn btn-primary"
+                            <h4>Teachers</h4>
+                            <a href="{{ route('admin.teachers.create') }}" class="btn btn-primary"
                                 style="position:absolute; right:50;">Create</a>
                         </div>
 
@@ -28,52 +37,54 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>title</th>
-                                            <th>short_content</th>
-                                            <th>icon</th>
+                                            <th>name</th>
+                                            <th>img</th>
+                                            <th>direction</th>
+                                            <th>telegram</th>
+                                            <th>instagram</th>
+                                            <th>faceebook</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($infos) == 0)
+                                        @if (count($teachers) == 0)
                                             <tr>
                                                 <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                                                 </td>
                                             </tr>
                                         @endif
 
-                                        @foreach ($infos as $item)
+                                        @foreach ($teachers as $teacher)
                                             <tr>
                                                 <td>
                                                     {{ ++$loop->index }}
                                                 </td>
-                                                <td>{{ $item->title }}</td>
-                                                <td>{{ $item->short_content }}</td>
-                                                <td><img src="/icons/{{ $item->icon }}" width="100px"  alt="">
-                                                    <br>
-                                                    <br>
+                                                <td>{{ $teacher->name }}</td>
+                                                <td><img src="/images/{{ $teacher->image }}" width="100px" alt="">
                                                 </td>
-
+                                                <td>{{ $teacher->direction }}</td>
+                                                <td>{{ $teacher->telegram }}</td>
+                                                <td>{{ $teacher->instegram }}</td>
+                                                <td>{{ $teacher->faceebook }}</td>
                                                 <td>
-                                                    <form action="{{ route('admin.infos.destroy', $item->id) }}"
+                                                    {{-- @if ($teacher->status == 0)
+                                                        Rahbariyat
+                                                    @else
+                                                        Oqituvchi
+                                                    @endif --}}
+                                                <td><br><br>
+
+                                                    <form action="{{ route('admin.teachers.destroy', $teacher->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="{{ route('admin.infos.show', $item->id) }}"
+                                                        <a href="{{ route('admin.teachers.show', $teacher->id) }}"
                                                             class="btn btn-info">
                                                             <ion-icon class="fas fa-info-circle"></ion-icon>
                                                         </a>
-                                                        <a href="{{ route('admin.infos.edit', $item->id) }}"
+                                                        <a href="{{ route('admin.teachers.edit', $teacher->id) }}"
                                                             class="btn btn-primary">
                                                             <ion-icon class="far fa-edit"></ion-icon>
-
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirm('Do you want to delete ?')">
-                                                                <ion-icon name="trash-outline"></ion-icon>
-                                                            </button>
-
                                                         </a>
                                                         <button class="btn btn-danger"
                                                             onclick="return confirm('Rostdan o`chirmoqchimisiz ?')">
@@ -87,8 +98,7 @@
 
                                     </tbody>
                                 </table>
-
-                                {{-- {{ $infos->links() }} --}}
+                                {{--  {{ $teachers->links() }} --}}
                             </div>
                         </div>
                     </div>
@@ -97,7 +107,3 @@
         </div>
     </section>
 @endsection
-
-
-
-

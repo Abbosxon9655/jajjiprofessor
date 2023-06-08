@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\articleController;
 use App\Http\Controllers\Admin\BladeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\NumberController;
 use App\Http\Controllers\Admin\HumanController;
 use App\Http\Controllers\Admin\NeighborhoodController;
@@ -49,7 +50,7 @@ Route::get('/maqola', [SiteController::class, 'maqola']);
 
 Route::post('/store', [BazaController::class, 'store'])->name('store');
 
-Route::prefix('admin/')/* ->middleware('auth') */->name('admin.')->group(function () {
+Route::prefix('admin/')->middleware('auth')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     
@@ -58,6 +59,11 @@ Route::prefix('admin/')/* ->middleware('auth') */->name('admin.')->group(functio
     Route::resource('/shows', ShowController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/articles', articleController::class);
+    Route::resource('/teachers', TeacherController::class);
+    Route::resource('/groups', GroupController::class);
+
+
+
     Route::resource('/numbers', NumberController::class);
     Route::resource('/humans', HumanController::class);
     Route::resource('/categories', CategoryController::class);

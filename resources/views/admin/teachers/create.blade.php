@@ -25,42 +25,40 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Yangi malumot qo'shish</h4>
+                            <h4>Yangi o'qituvchi qo'shish</h4>
                         </div>
                         <div class="card-body">
-                            {{-- <a class="create__btn" href="{{route('admin.infos.index')}}"> <i class='bx bx-arrow-back'></i>Qaytish</a> --}}
-                                <form class="create__inputs" action="{{route('admin.infos.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.teachers.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">title</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">name</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="title">
-{{-- 
-                                        @error('icon')
-                                        {{$message}}
-                                        @enderror --}}
-                                        
+                                        <input type="text" class="form-control" name="name">
                                     </div>
+
                                 </div>
                                 <div class="form-group row mb-4">
-                                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">short_content</label>
+                                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">img</label>
                                   <div class="col-sm-12 col-md-7">
-                                      <input type="text" class="form-control" name="short_content">
+                                      <input type="file" class="form-control" name="img">
                                   </div>
                               </div>
+
                               <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">icon</label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">direction</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="file" class="form-control" name="icon">
+                                    <input type="string" class="form-control" name="direction">
                                 </div>
-                            </div>
-
-
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">direction</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="string" class="form-control" name="direction">
+                                    </div>
+                                
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Yuborish</button>
+                                        <button class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
                             </form>

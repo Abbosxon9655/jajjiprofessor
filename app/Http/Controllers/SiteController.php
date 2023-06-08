@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
+use App\Models\Info;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $infos = Info::orderBy('id', 'DESC')->get();
+        return view('welcome', compact('infos'));
     }
 
     public function groups()
     {
-        return view('pages.groups');
+        $groups = Group::orderBy('id', 'DESC')->get();
+        return view('pages.groups', compact('groups'));
     }
 
     public function teach()
     {
-        return view('pages.teach');
+        $teachers = Teacher::orderBy('id', 'DESC')->get();
+        return view('pages.teachers', compact('teachers'));
     }
 
     public function yutuqlar()
