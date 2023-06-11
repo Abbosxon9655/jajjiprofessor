@@ -21,11 +21,11 @@ class SiteController extends Controller
         return view('pages.groups', compact('groups'));
     }
 
-    public function teach()
-    {
-        $teachers = Teacher::orderBy('id', 'DESC')->get();
-        return view('pages.teachers', compact('teachers'));
-    }
+    // public function teachers()
+    // {
+    //     $teachers = Teacher::orderBy('id', 'DESC')->get();
+    //     return view('pages.teachers', compact('teachers'));
+    // }
 
     public function yutuqlar()
     {

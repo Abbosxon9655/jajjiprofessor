@@ -11,7 +11,7 @@ class TeacherStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,12 +23,12 @@ class TeacherStoreRequest extends FormRequest
     {
         return [
              
-                'image' => 'required|max:3072',
-                'tgram' => 'required|max:20',
-                'fbook' => 'required|max:20',
-                'insta' => 'required|max:20',            
-                'name' => 'required|min:2|max:40',
-                'job' => 'required|min:2|max:25',
+                    'image' => 'required|max:3072',
+                    'tgram' => 'required|max:20',
+                    'fbook' => 'required|max:20',
+                    'insta' => 'required|max:20',            
+                    'name' => 'required|min:2|max:40',
+                    'job' => 'required|min:2|max:25',
             ];
         
     }

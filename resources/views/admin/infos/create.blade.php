@@ -35,11 +35,10 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="title">
-{{-- 
-                                        @error('icon')
+                                        <input type="text" class="form-control" name="title"> 
+                                        @error('title')
                                         {{$message}}
-                                        @enderror --}}
+                                        @enderror 
                                         
                                     </div>
                                 </div>
@@ -47,12 +46,18 @@
                                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">short_content</label>
                                   <div class="col-sm-12 col-md-7">
                                       <input type="text" class="form-control" name="short_content">
+                                      @error('short_content')
+                                      {{$message}}
+                                      @enderror
                                   </div>
                               </div>
                               <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">icon</label>
                                 <div class="col-sm-12 col-md-7">
                                     <input type="file" class="form-control" name="icon">
+                                    @error('icon')
+                                    {{$message}}
+                                    @enderror
                                 </div>
                             </div>
 

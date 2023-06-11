@@ -46,9 +46,37 @@
               </div>
 
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">shortcontent</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">direction</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" class="form-control" name="shortcontent" value="{{ $show->shortcontent }}">
+                  <input type="text" class="form-control" name="direction" value="{{ $show->direction }}">
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">telegram</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="telegram" value="{{ $show->telegram }}">
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">instegram</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="instegram" value="{{ $show->instegram }}">
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">faceebook</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="faceebook" value="{{ $show->faceebook }}">
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">job</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="faceebook" value="{{ $show->job }}">
                 </div>
               </div>
 

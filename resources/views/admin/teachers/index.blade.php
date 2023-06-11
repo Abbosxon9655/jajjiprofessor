@@ -43,6 +43,7 @@
                                             <th>telegram</th>
                                             <th>instagram</th>
                                             <th>faceebook</th>
+                                            <th>job</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -66,6 +67,7 @@
                                                 <td>{{ $teacher->telegram }}</td>
                                                 <td>{{ $teacher->instegram }}</td>
                                                 <td>{{ $teacher->faceebook }}</td>
+                                                <td>{{ $teacher->job }}</td>
                                                 <td>
                                                     {{-- @if ($teacher->status == 0)
                                                         Rahbariyat

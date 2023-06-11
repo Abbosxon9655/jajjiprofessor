@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GroupStoreRequest;
 use App\Models\Group;
@@ -22,8 +23,10 @@ class GroupController extends Controller
     }
 
 
-    public function store(GroupStoreRequest $request)
+    public function store(GroupStoreRequest $request, Group $group)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('create', 'groups', $user, $group));
         $requestData = $request->all();
 
         if ($request->hasFile('image')) {
@@ -54,6 +57,9 @@ class GroupController extends Controller
 
     public function update(GroupStoreRequest $request, Group $group)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('edit', 'groups', $user, $group));
+
         $requestData = $request->all();
 
         if ($request->hasFile('image')) {
@@ -70,6 +76,8 @@ class GroupController extends Controller
 
     public function destroy(Group $group)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('delete', 'groups', $user, $group));
         $this->unlink_file($group);
 
         $group->delete();

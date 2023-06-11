@@ -13,7 +13,7 @@ active
           <div class="card">
             <div class="card-header">
               <h4>Show Product</h4>
-              <a href="{{ route('admin.shows.index') }}" class="btn btn-primary" style="position:absolute; right:50;">Back</a>
+              <a href="{{ route('admin.teachers.index') }}" class="btn btn-primary" style="position:absolute; right:50;">Back</a>
             </div>
 
             <div class="card-body">
@@ -32,8 +32,28 @@ active
 
                   <tr>
                     <td>direction : </td>
-                    <td><b>{{ $show->shortcontent }}</b></td>
+                    <td><b>{{ $show->direction }}</b></td>
                 </tr>
+
+                <tr>
+                  <td>telegram : </td>
+                  <td><b>{{ $show->telegram }}</b></td>
+              </tr>
+
+              <tr>
+                <td>inctegram : </td>
+                <td><b>{{ $show->inctegram }}</b></td>
+            </tr>
+
+            <tr>
+              <td>faceebook : </td>
+              <td><b>{{ $show->faceebook }}</b></td>
+          </tr>
+
+          <tr>
+            <td>job : </td>
+            <td><b>{{ $show->job }}</b></td>
+        </tr>
 
                 </table>
               </div>

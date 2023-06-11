@@ -1,6 +1,10 @@
 
 
 <div class="row">
+{{-- 
+    @foreach ($teachers as $teacher)
+        
+    @endforeach --}}
     <div class="col-md-6 col-lg-3 text-center team mb-5">
         <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
             <img class="img-fluid w-100" src="assets/img/team-1.jpg" alt="" >
@@ -13,9 +17,9 @@
                 <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px;"
                     href="#"><i class="fab fa-instagram"></i></a>
             </div>
-        </div>
-        <h4>Dadaxanova Dilnoza</h4>
-        <i>Musiqa o'qituvchisi</i>
+        {{-- </div>
+        <h4>{{$teacher->name}}</h4>
+        <i>{{$teacher->job}}</i>
     </div>
-    
+     --}}
 </div>

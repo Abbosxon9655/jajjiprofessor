@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -24,26 +26,16 @@ class PostController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, Post $post )
     {
-        $request->validate([
-            'name'=>'required|max:20',
-            'img'=>'required|mimes:png,jpg',
-            'title'=>'required|min:15',
-            'status'=>'required|max:20',
-            'age'=>'required|max:25',
+        $user = auth()->user()->name;
+        event(new AuditEvent('create', 'posts', $user, $post));
 
-        ]);
-        $requestData = $request->all();
-        
-        if($request->hasFile('img'))
-        {
-            $file = $request->file('img');
-            $imgName = $file->getClientOriginalName();
-            $file->move('imeges/', $imgName);
-            $requestData['img'] = $imgName;
+         $requestData = $request->all();
+        if ($request->hasFile('img')) {
+            $requestData['img'] = $this->upload_file();
         }
-        Post::create ($requestData);
+        Post::create($requestData);
 
         return redirect()->route('admin.posts.index');
     }
@@ -61,26 +53,16 @@ class PostController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(PostStoreRequest $request, $id, Post $post)
     {
-        $request->validate([
-            'name'=>'required|max:20',
-            'img'=>'required|mimes:png,jpg',
-            'title'=>'required|min:15',
-            'status'=>'required|max:20',
-            'age'=>'required|max:25',
-
-        ]);
+        $user = auth()->user()->name;
+        event(new AuditEvent('edit', 'posts', $user, $post));
         
         $requestData = $request->all();
-        
-        if($request->hasFile('img'))
-        {
-            $file = $request->file('img');
-            $imgName = $file->getClientOriginalName();
-            $file->move('imeges/', $imgName);
-            $requestData['img'] = $imgName;
+        if ($request->hasFile('imeges')) {
+            $requestData['imeges'] = $this->upload_file();
         }
+       
         
         Post::find($id)->update($requestData);
         return redirect()->route('admin.posts.index');
@@ -89,7 +71,25 @@ class PostController extends Controller
   
     public function destroy(Post $post)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('delete', 'posts', $user, $post));
+
         $post -> delete();
         return redirect()->route('admin.posts.index');
+    }
+
+    public function unlink_file(Post $post)
+    {
+        if (isset($post->img) && file_exists(public_path('/img/' . $post->img))) {
+            unlink(public_path('/img/' . $post->img));
+        }
+    }
+
+    public function upload_file()
+    {
+        $file = request()->file('img');
+        $fileName = time() . '-' . $file->getClientOriginalName();
+        $file->move('img/', $fileName);
+        return $fileName;
     }
 }

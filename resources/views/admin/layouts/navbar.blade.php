@@ -21,11 +21,11 @@
     </svg> Posts</a>
 </li>
 
-<li class="nav-item"><a class="nav-link" href="{{ route('admin.teachers.index') }}">
+{{-- <li class="nav-item"><a class="nav-link" href="{{ route('admin.teachers.index') }}">
     <svg class="nav-icon">
         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
     </svg> Teachers</a>
-</li>
+</li> --}}
 
 <li class="nav-item"><a class="nav-link" href="{{ route('admin.groups.index') }}">
     <svg class="nav-icon">

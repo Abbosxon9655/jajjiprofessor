@@ -34,6 +34,9 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">name</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text" class="form-control" name="name">
+                                        @error('name')
+                                        {{$messege}}
+                                        @enderror
                                     </div>
 
                                 </div>
@@ -41,19 +44,56 @@
                                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">img</label>
                                   <div class="col-sm-12 col-md-7">
                                       <input type="file" class="form-control" name="img">
+                                      @error('img')
+                                      {{$messege}}
+                                      @enderror
                                   </div>
                               </div>
 
                               <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">direction</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="string" class="form-control" name="direction">
+                                    <input type="text" class="form-control" name="direction">
+                                    @error('direction')
+                                    {{$messege}}
+                                    @enderror
                                 </div>
+
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">direction</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">telegram</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="string" class="form-control" name="direction">
+                                        <input type="text" class="form-control" name="telegram">
+                                        @error('telegram')
+                                        {{$messege}}
+                                        @enderror
                                     </div>
+
+                                    <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">instegram</label>
+                                        <div class="col-sm-12 col-md-7">
+                                            <input type="text" class="form-control" name="instegram">
+                                            @error('instegram')
+                                            {{$messege}}
+                                            @enderror
+                                        </div>
+
+                                   <div class="form-group row mb-4">
+                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">faceebook</label>
+                                      <div class="col-sm-12 col-md-7">
+                                                <input type="text" class="form-control" name="faceebook">
+                                                @error('faceebook')
+                                                {{$messege}}
+                                                @enderror
+                                     </div>
+
+                                     <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">job</label>
+                                         <div class="col-sm-12 col-md-7">
+                                                   <input type="text" class="form-control" name="job">
+                                                   @error('job')
+                                                   {{$messege}}
+                                                   @enderror
+                                        </div>
                                 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>

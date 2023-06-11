@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -22,15 +23,11 @@ class OrderController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, Order $order)
     {
-        $request->validate([
-            'name'=>'required|max:15|min:10',
-            'phone'=>'required|max:20|min:7',
-            'email'=>'required|max:30|min:10',
-
-        ]);
-
+        $user = auth()->user()->name;
+        event(new AuditEvent('create', 'orders', $user, $order));
+       
         Order::create($request->all());
 
         return redirect()->route('admin.orders.index');
@@ -49,18 +46,16 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
-        $request->validate([
-            'name'=>'required|max:15|min:10',
-            'phone'=>'required|max:20|min:7',
-            'email'=>'required|max:30|min:10',
-
-        ]);
+        $user = auth()->user()->name;
+        event(new AuditEvent('edit', 'orders', $user, $order));
         
         $order-> update($request->all());
         return redirect()->route('admin.orders.index');
     }
     public function destroy(Order $order)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('delete', 'orders', $user, $order));
         $order -> delete();
         return redirect()->route('admin.orders.index');
     }

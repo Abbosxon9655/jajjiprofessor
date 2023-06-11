@@ -15,7 +15,7 @@
             <div class="text-center pb-2">
                 <p class="section-title px-5"><span class="px-2">Rahbariyat</span></p>
          
-                @include('section.teach')
+                @include('section.teachers')
              
 
             <div class="text-center pb-2">
@@ -23,9 +23,9 @@
                 <h1 class="mb-4">O'qituvchilarimiz bilan tanishing</h1>
             </div>
             
-                @include('section.teach')
+                @include('section.teachers')
             
-                @include('section.teach')
+                @include('section.teachers')
         
             </div>
 
