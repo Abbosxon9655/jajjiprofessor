@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('commentss', function (Blueprint $table) {
+        Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
+            $table->string('status');
             $table->string('img');
-            $table->string('job');
-            $table->text('short');
+            $table->string('name');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('commentss');
+        Schema::dropIfExists('achievements');
     }
 };

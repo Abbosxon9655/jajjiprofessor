@@ -2,82 +2,100 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleStoreRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
-class articleController extends Controller
+class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::orderBy('id', 'DESC')->paginate(2);
-        return view('admin.articles.index', compact('articles'));
+        $articles = Article::orderBY('id', 'DESC')->paginate(4);
 
+        return view('admin.articles.index', compact('articles'));
     }
 
-   
+
     public function create()
     {
         return view('admin.articles.create');
     }
 
 
-    public function store(Request $request)
+    public function store(ArticleStoreRequest $request, Article $article)
     {
-        $request->validate([
-            'name'=>'required|min:5|max:40',
-            'img'=>'required|max:2048',
-            'job'=>'required|max:50|min:12',
-            'short'=>'required|max:20|min:15',
-        ]);
-
+        $user = auth()->user()->name;
+        event(new AuditEvent('create', 'articles', $user, $article));
         $requestData = $request->all();
-        if($request->hasfile('img'))
-        {
-            $file=$request->file('img');
-            $imgName = $file->getClientOriginalName();
-            $file->move('imegs/',$imgName);
-            $requestData['img']=$imgName;
+
+        if ($request->hasFile('img')) {
+            $requestData['img'] = $this->upload_file();
         }
+
         Article::create($requestData);
 
-        return redirect()->route('admin.articles.index');
+        return redirect(route('admin.articles.index'))->with('success', 'Malumot muvaffaqiyatli qoshildi');
     }
 
- 
-    public function show(Article $article)
+
+    public function show($id)
     {
+        $article = Article::find($id);
+
         return view('admin.articles.show', compact('article'));
     }
 
-    public function edit(Article $article)
+
+    public function edit($id)
     {
+        $article = Article::find($id);
+
         return view('admin.articles.edit', compact('article'));
     }
 
-    public function update(Request $request,$id)
+
+    public function update(ArticleStoreRequest $request, Article $article)
     {
-        $request->validate([
-            'name'=>'required|min:5|max:40',
-            'img'=>'required|max:2048',
-            'job'=>'required|max:50|min:12',
-            'short'=>'required|max:20|min:15',
-        ]);
-        
+        $user = auth()->user()->name;
+        event(new AuditEvent('edit', 'articles', $user, $article));
         $requestData = $request->all();
-        if($request->hasfile('img'))
-        {
-            $file=$request->file('img');
-            $imgName = $file->getClientOriginalName();
-            $file->move('imegs/',$imgName);
-            $requestData['img']=$imgName;
+
+        if ($request->hasFile('img')) {
+            $this->unlink_file($article);
+            $requestData['img'] = $this->upload_file();
         }
-        Article::find($id)->update($requestData);
-        return redirect()->route('admin.articles.index');
+
+        $article->update($requestData);
+
+        return redirect()->route('admin.articles.index')->with('success', 'Malumot muvaffaqiyatli ozgartirildi');
     }
+
+
     public function destroy(Article $article)
     {
-        $article -> delete();
-        return redirect()->route('admin.articles.index');
+        $user = auth()->user()->name;
+        event(new AuditEvent('delete', 'articles', $user, $article));
+        $this->unlink_file($article);
+        $article->delete();
+
+        return redirect(route('admin.articles.index'))->with('danger', 'Malumot muvaffaqiyatli ochirildi');
+    }
+
+    public function upload_file()
+    {
+        $file = request()->file('img');
+        $fileName = time() . '-' . $file->getClientOriginalName();
+        $file->move('images/', $fileName);
+        $requestData['img'] = $fileName;
+        return $fileName;
+    }
+
+    public function unlink_file(Article $article)
+    {
+        if (isset($article->icon) && file_exists(public_path('/images/' . $article->icon))) {
+            unlink(public_path('/images/' . $article->icon));
+        }
     }
 }

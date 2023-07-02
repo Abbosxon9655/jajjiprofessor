@@ -11,7 +11,7 @@ class GroupController extends Controller
 {
     public function index()
     {
-        $groups = Group::orderBY('id', 'DESC')->paginate(6);
+        $groups = Group::orderBy('id', 'DESC')->get();
 
         return view('admin.groups.index', compact('groups'));
     }
@@ -27,8 +27,8 @@ class GroupController extends Controller
     {
         $user = auth()->user()->name;
         event(new AuditEvent('create', 'groups', $user, $group));
-        $requestData = $request->all();
 
+        $requestData = $request->all();
         if ($request->hasFile('image')) {
             $requestData['image'] = $this->upload_file();
         }

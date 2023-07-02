@@ -52,7 +52,10 @@
 
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
 
+
             @include('admin.layouts.navbar')
+
+            
 
         </ul>
 

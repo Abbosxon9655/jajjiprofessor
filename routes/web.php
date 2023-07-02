@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CommentsController;
 use App\Http\Controllers\Admin\InfoController as AdminInfoController;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\articleController;
 use App\Http\Controllers\Admin\BladeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\NumberController;
@@ -36,41 +38,46 @@ use PHPUnit\Framework\Attributes\PostCondition;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', function(){
+     return redirect('/index');
 });
 
-Route::get('/', [SiteController::class, 'index']);
-Route::get('/groups', [SiteController::class, 'groups']);
-Route::get('/teachers', [SiteController::class, 'teachers']);
-Route::get('/yutuqlar', [SiteController::class, 'yutuqlar']);
-Route::get('/gallery', [SiteController::class, 'gallery']);
-Route::get('/maqola', [SiteController::class, 'maqola']);
+
+Route::auto('/', SiteController::class);
 
 
-Route::post('/store', [BazaController::class, 'store'])->name('store');
+// Route::post('/store', [BazaController::class, 'store'])->name('store');
 
 Route::prefix('admin/')->middleware('auth')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     
-    Route::resource('/infos', InfoController::class);
-    Route::resource('/orders', OrderController::class);
-    Route::resource('/shows', ShowController::class);
-    Route::resource('/posts', PostController::class);
-    Route::resource('/articles', articleController::class);
-    // Route::resource('/teachers', TeacherController::class);
-    Route::resource('/groups', GroupController::class);
+    Route::resources([
+        '/infos' => InfoController::class,
+        '/orders' => OrderController::class,
+        '/shows' => ShowController::class,
+        '/posts' => PostController::class,
+        '/articles' => articleController::class,
+        '/teachers' => TeacherController::class,
+        '/groups' => GroupController::class,
+        '/comments' => CommentController::class,
+        '/achievements' => AchievementController::class,
 
+        '/numbers' => NumberController::class,
+        '/humans' => HumanController::class,
+        '/categories' => CategoryController::class,
+        '/blades' => BladeController::class,
+        '/regions' => RegionController::class,
+        '/districts' => DistrictController::class,
+        '/neighborhoods' => NeighborhoodController::class,
+    ]);
 
+  
 
-    Route::resource('/numbers', NumberController::class);
-    Route::resource('/humans', HumanController::class);
-    Route::resource('/categories', CategoryController::class);
-    Route::resource('/blades', BladeController::class);
-    Route::resource('/regions', RegionController::class);
-    Route::resource('/districts', DistrictController::class);
-    Route::resource('/neighborhoods', NeighborhoodController::class);
 });
 
 Auth::routes();

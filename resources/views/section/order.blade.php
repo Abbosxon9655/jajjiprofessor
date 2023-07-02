@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body rounded-bottom bg-primary p-5">
 
-                        <form action="{{route('store')}}" method="POST">
+                        <form action="/store" method="POST">
 
                             @csrf
 

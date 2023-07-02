@@ -13,7 +13,7 @@
 
     <!-- Wins Start -->
 
-            @include('section.yutuqlar')
+            @include('section.achievement')
             
     <!-- Wins End -->
 

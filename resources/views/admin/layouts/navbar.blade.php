@@ -34,6 +34,30 @@
 </li>
 
 
+<li class="nav-item"><a class="nav-link" href="{{ route('admin.comments.index') }}">
+    <svg class="nav-icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+    </svg> Comments</a>
+</li>
+
+<li class="nav-item"><a class="nav-link" href="{{ route('admin.articles.index') }}">
+    <svg class="nav-icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+    </svg> Article</a>
+</li>
+
+
+<li class="nav-item"><a class="nav-link" href="{{ route('admin.achievements.index') }}">
+    <svg class="nav-icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+    </svg> Achievement</a>
+</li>
+
+
+
+
+
+
 
 {{-- 
 <li class="nav-title">Client</li>
