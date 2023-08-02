@@ -96,7 +96,7 @@ class InfoController extends Controller
     {
         $file = request()->file('icon');
         $fileName = time() . '-' . $file->getClientOriginalName();
-        $file->move('icon/', $fileName);
+        $file->move('/icon/', $fileName);
         return $fileName;
     }
 }
